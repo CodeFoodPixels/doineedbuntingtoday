@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do I need bunting today?</title>
+  <meta name="description" content="Find out if you need bunting today if you're in England, Wales, Scotland or Northern Ireland">
+  <style>{% include "assets/css/global.css" %}</style>
+</head>
+<body class="{% if bank_holidays.bunting %}bunting{% endif %}">
+  <main class="main" id="main-content">
+    {{ content | safe}}
+    <div>
+      Made by <a href="https://twitter.com/CodeFoodPixels" rel="external nofollow noopener noreferrer">Luke Bonaccorsi</a>
+    </div>
+  </main>
+</body>
+</html>

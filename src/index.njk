@@ -1,0 +1,16 @@
+---
+layout: layouts/base
+---
+<h1 class="page-title">Do I need bunting today?</h1>
+<div class="page-content">
+  <span class="answer">
+    {% if bank_holidays.bunting %} 
+      Yes!
+    {% else %}
+      No.
+    {% endif %}
+  </span>
+  {% if bank_holidays.bunting %}
+    <span class="location">If you're in {{ bank_holidays.locations }}</span>
+  {% endif %}
+</div>

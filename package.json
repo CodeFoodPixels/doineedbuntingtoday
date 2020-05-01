@@ -1,0 +1,23 @@
+{
+  "name": "doineedbuntingtoday",
+  "version": "1.0.0",
+  "description": "Do I need bunting today?",
+  "main": "index.js",
+  "scripts": {
+    "build": "eleventy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeFoodPixels/doineedbuntingtoday.git"
+  },
+  "author": "Luke Bonaccorsi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodeFoodPixels/doineedbuntingtoday/issues"
+  },
+  "homepage": "https://github.com/CodeFoodPixels/doineedbuntingtoday#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "node-fetch": "^2.6.0"
+  }
+}

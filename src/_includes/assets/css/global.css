@@ -1,0 +1,81 @@
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: #000000;
+  font-family: 'press_start_2pregular', monospace;
+  color: #dddddd;
+  text-align: center;
+  line-height: 1.5;
+  padding: 8px;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+a {
+  color: #0099ff;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.bunting {
+  background-image: url(/images/bunting.png);
+  background-repeat: repeat-x;
+  background-color: #98CFE2;
+  padding-top: 66px;
+  color: #333333;
+}
+
+.bunting a {
+  color: #0000ff;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 100%;
+}
+
+.answer {
+  font-size: 4.5em;
+}
+
+@media (min-width: 500px) {
+  .answer {
+    font-size: 7em;
+  }
+}
+
+@media (min-width: 700px) {
+  .answer {
+    font-size: 10em;
+  }
+}
+
+@font-face {
+  font-family: 'press_start_2pregular';
+  src: url('/fonts/pressstart2p-webfont.woff2') format('woff2'), url('/fonts/pressstart2p-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: fallback;
+}
