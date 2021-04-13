@@ -10,10 +10,13 @@ layout: layouts/base
       No.
     {% endif %}
   </span>
-  {% if bank_holidays.bunting %}
-    <span class="subtext">If you're in {{ bank_holidays.locations }}</span>
-  {% endif %}
-  {% if bank_holidays.bankHoliday === false %}
+  {% if bank_holidays.bankHoliday %}
+    {% if bank_holidays.bunting %}
+      <span class="subtext">If you're in {{ bank_holidays.buntingLocations }}</span>
+    {% else %}
+      <span class="subtext">Today is a bank holiday in {{ bank_holidays.bankHolidayLocations }}, but you don't need bunting </span>
+    {% endif %}
+  {% else %}
     <span class="subtext">Today isn't a bank holiday in the UK</span>
   {% endif %}
 </div>

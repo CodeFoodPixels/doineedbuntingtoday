@@ -27,6 +27,7 @@ body {
   align-items: center;
   justify-content: center;
   flex: 1;
+  max-width: 960px;
 }
 
 a {
