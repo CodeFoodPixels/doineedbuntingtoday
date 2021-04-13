@@ -11,6 +11,9 @@ layout: layouts/base
     {% endif %}
   </span>
   {% if bank_holidays.bunting %}
-    <span class="location">If you're in {{ bank_holidays.locations }}</span>
+    <span class="subtext">If you're in {{ bank_holidays.locations }}</span>
+  {% endif %}
+  {% if bank_holidays.bankHoliday === false %}
+    <span class="subtext">Today isn't a bank holiday in the UK</span>
   {% endif %}
 </div>

@@ -49,6 +49,7 @@ module.exports = async () => {
     .reduce(
       (obj, location, i, src) => {
         if (i === 0) {
+          obj.bankHoliday = true;
           obj.bunting = true;
           obj.locations = location.displayName;
           return obj;
@@ -62,6 +63,6 @@ module.exports = async () => {
         obj.locations = `${obj.locations}, ${location.displayName}`;
         return obj;
       },
-      { bunting: false, locations: "" }
+      { bunting: false, locations: "", bankHoliday: false }
     );
 };
