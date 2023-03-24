@@ -1,24 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Do I need bunting today?</title>
-  <meta name="description" content="Find out if today is a bank holiday that needs bunting if you're in England, Wales, Scotland or Northern Ireland">
-  <link rel="preload" href="/fonts/pressstart2p-subset.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-  <style>{% include "assets/css/global.css" %}</style>
-</head>
-<body class="{% if bank_holidays.bunting %}bunting{% endif %}">
-  <main class="main" id="main-content">
-    {{ content | safe}}
-    <div>
-      <p><a href="https://twitter.com/CodeFoodPixels" rel="external noopener noreferrer">Luke Bonaccorsi</a> built this, <a href="https://lukeb.co.uk/2020/05/25/do-i-need-bunting-today/" rel="external noopener noreferrer">because why not?</a></p>
-      <p>Data sourced from <a href="https://www.gov.uk/bank-holidays" rel="external noopener noreferrer">the GOV.UK website</a></p>
-    </div>
-  </main>
-	<script defer src="https://analytics.lukeb.co.uk/ping.js" type="text/javascript"></script>
-</body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <link rel="preload" href="/fonts/pressstart2p-subset.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <style>{% include "assets/css/global.css" %}</style>
+  </head>
+  <body class="{% if bunting === "true" %}bunting{% endif %}">
+    <main class="main" id="main-content">
+      <div>
+        <p>
+          <a href="/">UK</a>
+          |
+          <a href="/scotland/">Scotland</a>
+          |
+          <a href="/england/">England</a>
+          |
+          <a href="/wales/">Wales</a>
+          |
+          <a href="/northern-ireland/">Northern Ireland</a>
+        </p>
+      </div>
+      <h1 class="page-title">{{ title }}</h1>
+      {{ content | safe }}
+      <div>
+        <p>
+          <a href="https://indieweb.social/@codefoodpixels" rel="external noopener noreferrer">Luke Bonaccorsi</a>
+          built this,
+          <a href="https://lukeb.co.uk/2020/05/25/do-i-need-bunting-today/" rel="external noopener noreferrer">because why not?</a>
+        </p>
+        <p>Data sourced from
+          <a href="https://www.gov.uk/bank-holidays" rel="external noopener noreferrer">the GOV.UK website</a>
+        </p>
+      </div>
+    </main>
+    <script defer src="https://analytics.lukeb.co.uk/ping.js" type="text/javascript"></script>
+  </body>
 </html>

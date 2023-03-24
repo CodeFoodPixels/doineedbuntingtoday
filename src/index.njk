@@ -1,10 +1,14 @@
 ---
+title: Do I need bunting today?
+description: Find out if today is a bank holiday that needs bunting if you're in England, Wales, Scotland or Northern Ireland
 layout: layouts/base
+eleventyComputed:
+  bunting: "{{ 'true' if bank_holidays.bunting }}"
 ---
-<h1 class="page-title">Do I need bunting today?</h1>
+
 <div class="page-content">
   <span class="answer">
-    {% if bank_holidays.bunting %} 
+    {% if bank_holidays.bunting %}
       Yes!
     {% else %}
       No.
@@ -12,9 +16,11 @@ layout: layouts/base
   </span>
   {% if bank_holidays.bankHoliday %}
     {% if bank_holidays.bunting %}
-      <span class="subtext">If you're in {{ bank_holidays.buntingLocations }}</span>
+      <span class="subtext">If you're in {{ bank_holidays.buntingLocations | sentencejoin("or") }}</span>
     {% else %}
-      <span class="subtext">Today is a bank holiday in {{ bank_holidays.bankHolidayLocations }}, but you don't need bunting </span>
+      <span class="subtext">Today is a bank holiday in
+        {{ bank_holidays.bankHolidayLocations | sentencejoin("and") }}, but you don't need bunting
+      </span>
     {% endif %}
   {% else %}
     <span class="subtext">Today isn't a bank holiday in the UK</span>

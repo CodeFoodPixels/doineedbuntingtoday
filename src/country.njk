@@ -1,0 +1,30 @@
+---
+pagination:
+    data: bank_holidays.locations
+    size: 1
+    alias: country
+permalink: "{{ country.displayName | slug }}/index.html"
+layout: layouts/base
+eleventyComputed:
+  title: Do I need bunting in {{ country.displayName }} today?
+  description: Find out if today is a bank holiday that needs bunting if you're in {{ country.displayName }}
+  bunting: "{{ 'true' if country.bunting }}"
+---
+
+<div class="page-content">
+  <span class="answer">
+    {% if country.bunting %}
+      Yes!
+    {% else %}
+      No.
+    {% endif %}
+  </span>
+  {% if country.bankHoliday %}
+    {% if country.bunting === false %}
+      <span class="subtext">Today is a bank holiday in {{ country.displayName }}, but you don't need bunting
+      </span>
+    {% endif %}
+  {% else %}
+    <span class="subtext">Today isn't a bank holiday in {{ country.displayName }}</span>
+  {% endif %}
+</div>

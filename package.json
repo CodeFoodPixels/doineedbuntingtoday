@@ -4,7 +4,8 @@
   "description": "Do I need bunting today?",
   "main": "index.js",
   "scripts": {
-    "build": "eleventy"
+    "build": "eleventy",
+    "serve": "eleventy --serve"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,9 @@
     "@11ty/eleventy": "^0.12.1",
     "node-fetch": "^2.6.7",
     "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "date-fns-tz": "^2.0.0"
   }
 }
