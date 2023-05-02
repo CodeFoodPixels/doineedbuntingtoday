@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-const { utcToZonedTime } = require("date-fns-tz");
+const { utcToZonedTime, zonedTimeToUtc } = require("date-fns-tz");
 
 module.exports = async () => {
   const rawData = await fetch(
@@ -95,8 +95,10 @@ module.exports = async () => {
       const eventDate = new Date(event);
       eventDate.setHours(0, 0, 0, 0);
 
-      if (eventDate > today && eventDate < nextBankHoliday) {
-        return eventDate;
+      const zonedEventDate = zonedTimeToUtc(eventDate, "Europe/London");
+
+      if (zonedEventDate > today && zonedEventDate < nextBankHoliday) {
+        return zonedEventDate;
       }
 
       return nextBankHoliday;
