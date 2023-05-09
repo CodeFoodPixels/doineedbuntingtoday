@@ -1,5 +1,5 @@
 const dateAdd = require("date-fns/add");
-const { zonedTimeToUtc } = require("date-fns-tz");
+const { zonedTimeToUtc, utcToZonedTime } = require("date-fns-tz");
 
 const template = `const { request } = require("https");
 const { schedule } = require("@netlify/functions");
@@ -46,30 +46,20 @@ class NextBuild {
     return `${minutes} ${hours} ${days} ${months} ${dayOfWeek}`;
   }
 
-  getUTCEventDate(date, timezone) {
-    const padded = (val) => val.toString().padStart(2, "0");
-
-    return zonedTimeToUtc(
-      `${date.getFullYear()}-${padded(date.getMonth() + 1)}-${padded(
-        date.getDate()
-      )} ${padded(date.getHours())}:${padded(date.getMinutes())}:${padded(
-        date.getSeconds()
-      )}`,
-      timezone
-    );
-  }
-
   async render({ bank_holidays }) {
-    const tomorrow = dateAdd(new Date().setHours(0, 0, 0, 0), { days: 1 });
+    const tomorrow = zonedTimeToUtc(
+      dateAdd(
+        utcToZonedTime(new Date(), "Europe/London").setHours(0, 0, 0, 0),
+        { days: 1 }
+      ),
+      "Europe/London"
+    );
     const nextRebuild = bank_holidays.bankHoliday
       ? tomorrow
       : bank_holidays.nextBankHoliday;
 
     return template
-      .replace(
-        "0 0 0 0 0",
-        this.dateToCron(this.getUTCEventDate(nextRebuild, "Europe/London"))
-      )
+      .replace("0 0 0 0 0", this.dateToCron(nextRebuild))
       .replace("<<build_hook>>", process.env.BUILD_HOOK);
   }
 }
